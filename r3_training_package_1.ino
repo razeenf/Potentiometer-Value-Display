@@ -20,9 +20,9 @@ void setup()
 
 void loop()
 {
-  int potMeasure = analogRead(A5);					//Measures value of potentiometer 
+  int potMeasure = analogRead(A5);			//Measures value of potentiometer 
   potMeasure = map(potMeasure, 0, 1023, 0, 99); 	//Maps potentiometers regular value of 0-1023 to 0-99
-  Serial.println(potMeasure);						//Prints potentiometer value on the serial monitor (for personal checking)
+  Serial.println(potMeasure);				//Prints potentiometer value on the serial monitor (for personal checking)
   
   int num1 = potMeasure/10%10;		//Method to obtain the first digit of a double digit int
   int num2 = potMeasure%10; 		//Method to obtain the second digit of a double digit int
