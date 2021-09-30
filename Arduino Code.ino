@@ -38,6 +38,10 @@ void loop()
       digit = num2; 
       ssegNum = 2; 
     }
+    else {
+      break;
+      Serial.println("Error");
+    }
     
     switch(digit){		//Switch statement calls respective function based on first and second digit
       case 0:
