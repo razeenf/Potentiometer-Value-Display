@@ -27,76 +27,58 @@ void loop()
   int num1 = potMeasure/10%10;		//Method to obtain the first digit of a double digit int
   int num2 = potMeasure%10; 		//Method to obtain the second digit of a double digit int
   
-  switch(num1){		//Switch statement calls respective function based on first digit
-    case 0:
-    	zero(1);
-    	break;
-    case 1: 
-    	one(1);
-    	break;
-    case 2:
-    	two(1);
-    	break;
-    case 3: 
-    	three(1);
-    	break;
-    case 4: 
-    	four(1);
-    	break;
-    case 5:
-    	five(1);
-    	break;
-    case 6:
-    	six(1);
-    	break;
-    case 7: 
-   		seven(1);
-    	break;
-    case 8:
-    	eight(1);
-    	break;
-    case 9:
-    	nine(1);
-    	break;
-  }
+  int count = 1, digit, ssegNum;
   
-  switch(num2){		//Calls respective function based on second digit
-    case 0:
-    	zero(2);
-    	break;
-    case 1: 
-    	one(2);
-    	break;
-    case 2:
-    	two(2);
-    	break;
-    case 3: 
-    	three(2);
-    	break;
-    case 4: 
-    	four(2);
-    	break;
-    case 5:
-    	five(2);
-    	break;
-    case 6:
-    	six(2);
-    	break;
-    case 7: 
-   		seven(2);
-    	break;
-    case 8:
-    	eight(2);
-    	break;
-    case 9:
-    	nine(2);
-    	break;
+  while(count < 3){
+    if(count == 1){
+      digit = num1;
+      ssegNum = 1; 
+    }
+    else if(count == 2){
+      digit = num2; 
+      ssegNum = 2; 
+    }
+    
+    switch(digit){		//Switch statement calls respective function based on first and second digit
+      case 0:
+          zero(ssegNum);
+          break;
+      case 1: 
+          one(ssegNum);
+          break;
+      case 2:
+          two(ssegNum);
+          break;
+      case 3: 
+          three(ssegNum);
+          break;
+      case 4: 
+          four(ssegNum);
+          break;
+      case 5:
+          five(ssegNum);
+          break;
+      case 6:
+          six(ssegNum);
+          break;
+      case 7: 
+          seven(ssegNum);
+          break;
+      case 8:
+          eight(ssegNum);
+          break;
+      case 9:
+          nine(ssegNum);
+          break;
+  	}  
+    
+    count++;    
   }
 }
 
 //Fucntions used to set sseg displays to a specfic digit
 
-void zero(int ssegNum){		//Passing a interger value of 1 or 2 to clarify which display to write to
+void zero(int ssegNum){		//Passing a interger value of 1 or 2 to spedify which display to write to
   if(ssegNum == 1){				
     digitalWrite(sseg1A, 0);		//Integer numbers are set using binary values which can be simply done due to the decoders 			
   	digitalWrite(sseg1B, 0);
