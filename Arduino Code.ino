@@ -6,7 +6,7 @@ int sseg1A = 11, sseg1B = 10, sseg1C = 9, sseg1D = 8;
 
 void setup()
 {
-  pinMode(potPin, INPUT);		//Setting sseg displays as input and potentiometer as output
+  pinMode(potPin, INPUT);		//Setting sseg displays as output and potentiometer as input
   pinMode(sseg2A, OUTPUT);
   pinMode(sseg2B, OUTPUT);
   pinMode(sseg2C, OUTPUT);
