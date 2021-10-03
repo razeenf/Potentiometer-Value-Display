@@ -38,8 +38,8 @@ void loop()
       ssegNum = 2; 
     }
     else {
-      break;
       Serial.println("Error");
+      break;
     }
     
     switch(digit){		//Switch statement calls respective function based on first and second digit
