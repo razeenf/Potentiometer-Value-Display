@@ -28,7 +28,7 @@ void loop()
   int num2 = potMeasure%10; 		//Method to obtain the second digit of a double digit in
   int i, digit, ssegNum;
   
-  for(i = 1; i<3; i++){
+  for(i = 1; i<3; i++){   //Loops twice in order to call function for both displays  
     if(i == 1){
       digit = num1;
       ssegNum = 1; 
