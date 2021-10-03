@@ -6,7 +6,7 @@ int sseg1A = 11, sseg1B = 10, sseg1C = 9, sseg1D = 8;
 
 void setup()
 {
-  pinMode(potPin, INPUT);		//Setting sseg displays as input and potentiometer as output
+  pinMode(potPin, INPUT);		//Setting sseg displays as output and potentiometer as input
   pinMode(sseg2A, OUTPUT);
   pinMode(sseg2B, OUTPUT);
   pinMode(sseg2C, OUTPUT);
@@ -25,16 +25,15 @@ void loop()
   Serial.println(potMeasure);				//Prints potentiometer value on the serial monitor (for personal checking)
   
   int num1 = potMeasure/10%10;		//Method to obtain the first digit of a double digit int
-  int num2 = potMeasure%10; 		//Method to obtain the second digit of a double digit int
+  int num2 = potMeasure%10; 		//Method to obtain the second digit of a double digit in
+  int i, digit, ssegNum;
   
-  int count = 1, digit, ssegNum;
-  
-  while(count < 3){
-    if(count == 1){
+  for(i = 1; i<3; i++){
+    if(i == 1){
       digit = num1;
       ssegNum = 1; 
     }
-    else if(count == 2){
+    else if(i == 2){
       digit = num2; 
       ssegNum = 2; 
     }
@@ -45,203 +44,52 @@ void loop()
     
     switch(digit){		//Switch statement calls respective function based on first and second digit
       case 0:
-          zero(ssegNum);
+          display(0, 0, 0, 0, ssegNum);
           break;
       case 1: 
-          one(ssegNum);
+          display(0, 0, 0, 1, ssegNum);
           break;
       case 2:
-          two(ssegNum);
+          display(0, 0, 1, 0, ssegNum);
           break;
       case 3: 
-          three(ssegNum);
+          display(0, 0, 1, 1, ssegNum);
           break;
       case 4: 
-          four(ssegNum);
+          display(0, 1, 0, 0, ssegNum);
           break;
       case 5:
-          five(ssegNum);
+          display(0, 1, 0, 1, ssegNum);
           break;
       case 6:
-          six(ssegNum);
+          display(0, 1, 1, 0, ssegNum);
           break;
       case 7: 
-          seven(ssegNum);
+          display(0, 1, 1, 1, ssegNum);
           break;
       case 8:
-          eight(ssegNum);
+          display(1, 0, 0, 0, ssegNum);
           break;
       case 9:
-          nine(ssegNum);
+          display(1, 0, 0, 1, ssegNum);
           break;
   	}  
-    
-    count++;    
   }
 }
 
-//Fucntions used to set sseg displays to a specfic digit
-
-void zero(int ssegNum){		//Passing a interger value of 1 or 2 to spedify which display to write to
+void display(int a, int b, int c, int d, int ssegNum){	
+  
   if(ssegNum == 1){				
-    digitalWrite(sseg1A, 0);		//Integer numbers are set using binary values which can be simply done due to the decoders 			
-  	digitalWrite(sseg1B, 0);
-  	digitalWrite(sseg1C, 0);
-  	digitalWrite(sseg1D, 0);
+    digitalWrite(sseg1A, a);				
+  	digitalWrite(sseg1B, b);
+  	digitalWrite(sseg1C, c);
+  	digitalWrite(sseg1D, d);
   }
   else if(ssegNum == 2){
-  	digitalWrite(sseg2A, 0);
-  	digitalWrite(sseg2B, 0);
-  	digitalWrite(sseg2C, 0);
-  	digitalWrite(sseg2D, 0);
+  	digitalWrite(sseg2A, a);
+  	digitalWrite(sseg2B, b);
+  	digitalWrite(sseg2C, c);
+  	digitalWrite(sseg2D, d);
   }
-  else Serial.println("Error");		//If an integer not 1 or 2 is passed an error is displayed in the serial monitor
+  else Serial.println("Error");		
 }
-
-void one(int ssegNum){
-  if(ssegNum == 1){
-    digitalWrite(sseg1A, 0);
-    digitalWrite(sseg1B, 0);
-    digitalWrite(sseg1C, 0);
-    digitalWrite(sseg1D, 1);
-  }
-  else if(ssegNum == 2){
-  	digitalWrite(sseg2A, 0);
-  	digitalWrite(sseg2B, 0);
-  	digitalWrite(sseg2C, 0);
-  	digitalWrite(sseg2D, 1);
-  }
-  else Serial.println("Error");
-}
-
-void two(int ssegNum){
-  if(ssegNum == 1){
-    digitalWrite(sseg1A, 0);
-  	digitalWrite(sseg1B, 0);
-  	digitalWrite(sseg1C, 1);
-  	digitalWrite(sseg1D, 0);
-  }
-  else if(ssegNum == 2){
-  	digitalWrite(sseg2A, 0);
-  	digitalWrite(sseg2B, 0);
-  	digitalWrite(sseg2C, 1);
-  	digitalWrite(sseg2D, 0);
-  }
-  else Serial.println("Error");
-}
-
-void three(int ssegNum){
-  if(ssegNum == 1){
-    digitalWrite(sseg1A, 0);
-  	digitalWrite(sseg1B, 0);
-  	digitalWrite(sseg1C, 1);
-  	digitalWrite(sseg1D, 1);
-  }
-  else if(ssegNum == 2){
-  	digitalWrite(sseg2A, 0);
-  	digitalWrite(sseg2B, 0);
-  	digitalWrite(sseg2C, 1);
-  	digitalWrite(sseg2D, 1);
-  }
-  else Serial.println("Error");
-}
-
-void four(int ssegNum){
-  if(ssegNum == 1){
-    digitalWrite(sseg1A, 0);
-  	digitalWrite(sseg1B, 1);
-  	digitalWrite(sseg1C, 0);
-  	digitalWrite(sseg1D, 0);
-  }
-  else if(ssegNum == 2){
-  	digitalWrite(sseg2A, 0);
-  	digitalWrite(sseg2B, 1);
-  	digitalWrite(sseg2C, 0);
-  	digitalWrite(sseg2D, 0);
-  }
-  else Serial.println("Error");
-}
-
-void five(int ssegNum){
-  if(ssegNum == 1){
-    digitalWrite(sseg1A, 0);
-  	digitalWrite(sseg1B, 1);
-  	digitalWrite(sseg1C, 0);
-  	digitalWrite(sseg1D, 1);
-  }
-  else if(ssegNum == 2){
-  	digitalWrite(sseg2A, 0);
-  	digitalWrite(sseg2B, 1);
-  	digitalWrite(sseg2C, 0);
-  	digitalWrite(sseg2D, 1);
-  }
-  else Serial.println("Error");
-}
-
-void six(int ssegNum){
-  if(ssegNum == 1){
-    digitalWrite(sseg1A, 0);
-  	digitalWrite(sseg1B, 1);
-  	digitalWrite(sseg1C, 1);
-  	digitalWrite(sseg1D, 0);
-  }
-  else if(ssegNum == 2){
-  	digitalWrite(sseg2A, 0);
-  	digitalWrite(sseg2B, 1);
-  	digitalWrite(sseg2C, 1);
-  	digitalWrite(sseg2D, 0);
-  }
-  else Serial.println("Error");
-}
-
-void seven(int ssegNum){
-  if(ssegNum == 1){
-    digitalWrite(sseg1A, 0);
-  	digitalWrite(sseg1B, 1);
-  	digitalWrite(sseg1C, 1);
-  	digitalWrite(sseg1D, 1);
-  }
-  else if(ssegNum == 2){
-  	digitalWrite(sseg2A, 0);
-  	digitalWrite(sseg2B, 1);
-  	digitalWrite(sseg2C, 1);
-  	digitalWrite(sseg2D, 1);
-  }
-  else Serial.println("Error");
-}
-
-void eight(int ssegNum){
-  if(ssegNum == 1){
-    digitalWrite(sseg1A, 1);
-  	digitalWrite(sseg1B, 0);
-  	digitalWrite(sseg1C, 0);
-  	digitalWrite(sseg1D, 0);
-  }
-  else if(ssegNum == 2){
-  	digitalWrite(sseg2A, 1);
-  	digitalWrite(sseg2B, 0);
-  	digitalWrite(sseg2C, 0);
-  	digitalWrite(sseg2D, 0);
-  }
-  else Serial.println("Error");
-}
-
-void nine(int ssegNum){
-  if(ssegNum == 1){
-    digitalWrite(sseg1A, 1);
-  	digitalWrite(sseg1B, 0);
-  	digitalWrite(sseg1C, 0);
-  	digitalWrite(sseg1D, 1);
-  }
-  else if(ssegNum == 2){
-  	digitalWrite(sseg2A, 1);
-  	digitalWrite(sseg2B, 0);
-  	digitalWrite(sseg2C, 0);
-  	digitalWrite(sseg2D, 1);
-  }
-  else Serial.println("Error");
-}
-
-
-
-
