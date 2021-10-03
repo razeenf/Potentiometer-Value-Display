@@ -42,7 +42,7 @@ void loop()
       break;
     }
     
-    switch(digit){		//Switch statement calls respective function based on first and second digit
+    switch(digit){		//Switch statement calls function passing values based on digit
       case 0:
           display(0, 0, 0, 0, ssegNum);
           break;
@@ -77,7 +77,7 @@ void loop()
   }
 }
 
-void display(int a, int b, int c, int d, int ssegNum){	
+void display(int a, int b, int c, int d, int ssegNum){    //function to write digit to sseg
   
   if(ssegNum == 1){				
     digitalWrite(sseg1A, a);				
