@@ -86,7 +86,7 @@ void display(int a, int b, int c, int d, int ssegNum){
     digitalWrite(sseg1D, d);
   }
   else if(ssegNum == 2){
-  	digitalWrite(sseg2A, a);
+    digitalWrite(sseg2A, a);
     digitalWrite(sseg2B, b);
     digitalWrite(sseg2C, c);
     digitalWrite(sseg2D, d);
