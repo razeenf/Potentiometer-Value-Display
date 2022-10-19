@@ -1,4 +1,4 @@
-# R3-SoftwareTask1-RazeenFaruque
+# Potentiometer-Value-Display
 
 For this task I programed two 7-segment displays to display a number between 0 and 99 based on a potentiometers position.  
 
